@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const schedule = require('node-schedule');
 const scrapeGoogleRating = require('./scraper');
+const port = process.env.PORT || 4000;
 
 let latestRating = null;
 
@@ -20,6 +21,6 @@ app.get('/api/rating', (req, res) => {
     res.json({ rating: latestRating });
 });
 
-app.listen(3001, () => {
-    console.log('Server is running on port 3001');
+app.listen(port, () => {
+    console.log('Server is running on port ${port}');
 });
